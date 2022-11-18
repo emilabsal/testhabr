@@ -1,26 +1,47 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="pug">
+the-header
+.container
+  .tags
+    base-tag(title="Текст")
+    base-tag(title="Текст", icon="alert")
+    base-tag(title="Текст", backgroundColor="var(--color-primary)")
+    base-tag(title="Текст", borderColor="var(--color-green)")
+  .cards
+    base-card-main
+    base-card-main(lineColor="var(--color-red)")
+    base-card-main(lineColor="var(--color-green)")
+    base-card-main(lineColor="var(--color-purple)")
+  base-modal-search
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheHeader from "@/components/layout/TheHeader.vue";
+import BaseTag from "@/components/base/BaseTag.vue";
+import BaseCardMain from "@/components/base/BaseCardMain.vue";
+import BaseModalSearch from "@/components/base/BaseModalSearch.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    TheHeader,
+    BaseTag,
+    BaseCardMain,
+    BaseModalSearch,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass" scoped>
+.tags
+  margin-top: 20px
+  +flex($jc: flex-start)
+  gap: 8px
+  flex-wrap: wrap
+.cards
+  margin-top: 20px
+  border-radius: 6px
+  margin-bottom: 20px
+  overflow-x: auto
+  .card:not(:last-child)
+    border-bottom: 1px solid $inputs
 </style>
